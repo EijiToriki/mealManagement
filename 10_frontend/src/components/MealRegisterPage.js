@@ -12,9 +12,12 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/ja'; 
 import ja from 'dayjs/locale/ja'
 
-dayjs.locale('ja'); // 日本語ロケールを設定
+dayjs.locale('ja');
 
 const MealRegisterPage = () => {
+  const [selectedMeal, setSelectedMeal] = React.useState({})
+
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ja}>
       <h3 style={{marginLeft: "2%"}}>食事登録</h3>
@@ -30,7 +33,6 @@ const MealRegisterPage = () => {
                 inputFormat="yyyy年MM月dd日"
                 locale='ja'
                 mask='____年__月__日'
-                renderInput={(params) => <TextField {...params} />}
               />
               <FormControl sx={{ width: "80px", marginLeft: "10px" }} >
                 <InputLabel id="demo-simple-select-label">時間</InputLabel>
@@ -53,8 +55,14 @@ const MealRegisterPage = () => {
           </Grid>
           <Grid item xs={10}>
             <Box display="flex" alignItems="center">
-              <TextField id="mealName" label="料理名" variant="outlined" sx={{ width: "300px"}} />
-              <SelectModal />
+              <TextField 
+                id="mealName" 
+                label="料理名" 
+                variant="outlined" 
+                sx={{ width: "300px"}} 
+                value={selectedMeal.mealName ? selectedMeal.mealName : ""}   
+              />
+              <SelectModal setSelectedMeal={setSelectedMeal} />
             </Box>
           </Grid>
           <Grid item xs={2}>
@@ -62,7 +70,12 @@ const MealRegisterPage = () => {
           </Grid>
           <Grid item xs={4}>
             <Box display="flex" alignItems="center">
-              <TextField id="calories" label="熱量" variant="outlined" />
+              <TextField 
+                id="calories" 
+                label="熱量" 
+                variant="outlined" 
+                value={selectedMeal.calories ? selectedMeal.calories : ""} 
+              />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 kcal
               </Typography>
@@ -73,7 +86,12 @@ const MealRegisterPage = () => {
           </Grid>
           <Grid item xs={4}>
             <Box display="flex" alignItems="center">
-              <TextField id="protein" label="タンパク質" variant="outlined" />
+              <TextField 
+                id="protein" 
+                label="タンパク質" 
+                variant="outlined"
+                value={selectedMeal.protein ? selectedMeal.protein : ""}  
+              />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 g
               </Typography>
@@ -84,7 +102,12 @@ const MealRegisterPage = () => {
           </Grid>
           <Grid item xs={4}>
             <Box display="flex" alignItems="center">
-              <TextField id="fat" label="脂質" variant="outlined" />
+              <TextField 
+                id="fat" 
+                label="脂質" 
+                variant="outlined"
+                value={selectedMeal.fat ? selectedMeal.fat : ""}   
+              />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 g
               </Typography>
@@ -95,7 +118,12 @@ const MealRegisterPage = () => {
           </Grid>
           <Grid item xs={4}>
             <Box display="flex" alignItems="center">
-              <TextField id="carbs" label="炭水化物" variant="outlined" />
+              <TextField 
+                id="carbs" 
+                label="炭水化物" 
+                variant="outlined"
+                value={selectedMeal.carbs ? selectedMeal.carbs : ""}   
+              />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 g
               </Typography>
@@ -106,7 +134,12 @@ const MealRegisterPage = () => {
           </Grid>
           <Grid item xs={4}>
             <Box display="flex" alignItems="center">
-              <TextField id="salt" label="食塩相当量" variant="outlined" />
+              <TextField 
+                id="salt" 
+                label="食塩相当量" 
+                variant="outlined"
+                value={selectedMeal.salt ? selectedMeal.salt : ""}    
+              />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 g
               </Typography>

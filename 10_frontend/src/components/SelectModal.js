@@ -3,23 +3,60 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { Divider, Grid, Pagination, Stack, TextField } from '@mui/material';
+import { registeredMeal } from '../dummyData/registeredMeal';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 960,
+  width: 480,
+  height: '90%',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  display: 'flex',
+  flexDirection: 'column',
 };
 
-const SelectModal = () => {
+const contentStyle = {
+  flex: 1,
+  overflowY: 'auto', // 縦方向のスクロールを有効に
+  paddingRight: '8px', // スクロールバーのための余白
+  marginTop: '16px', // 上の検索部分と少し間隔を空ける
+};
+
+const SelectModal = ({setSelectedMeal}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [filteredMeal, setFilteredMeal] = React.useState(registeredMeal.slice(0, 3))
+  const [page, setPage] = React.useState(1)
+
+  const handleSearchChange = (e) => {
+    if(e.target.value === ""){
+      setFilteredMeal(registeredMeal.slice(0, 3))
+      setPage(1)
+    }else{
+      setFilteredMeal(registeredMeal.filter(meal => 
+        meal.mealName.includes(e.target.value)
+      ))
+    }
+  }
+
+  const handleChangePagination = (e, page) => {
+    setPage(page)
+    setFilteredMeal(registeredMeal.slice(3*(page-1), 3*page))
+
+  }
+
+  const handleDecision = (meal) => {
+    handleClose()
+    setSelectedMeal(meal)
+  }
 
   return (
     <>
@@ -32,22 +69,57 @@ const SelectModal = () => {
     >
       <Box sx={style}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
+          登録済み料理の選択
         </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
+        <Grid container alignItems="center" spacing={2} marginTop="3px">
+          <Grid item xs={3} >
+            <Typography sx={{marginLeft: "20px"}}>
+              料理名
+            </Typography>
+          </Grid>
+          <Grid item xs={9}>
+            <TextField id="mealName" label="料理名" variant="outlined" sx={{marginLeft: "20px"}} onChange={handleSearchChange} />
+          </Grid>
+          <Grid item xs={12}>
+            <Divider />
+          </Grid>
+        </Grid>
+
+        <Box sx={contentStyle}>
+            <Grid container alignItems="center" spacing={2}>
+
+          {
+            filteredMeal.map((meal, index) => {
+              return (
+                <React.Fragment key={index}>
+                  <Grid item xs={9}>
+                    <Typography sx={{ marginLeft: '30px' }}>{meal.mealName}</Typography>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button variant="outlined" color="success" onClick={() => handleDecision(meal)} >
+                      決定
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Divider />
+                  </Grid>
+                </React.Fragment>
+              )
+            })}
+        
+          </Grid>
+          {
+            filteredMeal.length !== 0 ?
+              <Stack direction="row" spacing={2} justifyContent="center" marginTop="10px" marginBottom="10px" >
+                <Pagination count={Math.ceil(registeredMeal.length / 3)} variant="outlined" shape="rounded" page={page} onChange={handleChangePagination} />
+              </Stack>
+            :
+            <Typography id="noResult" marginTop="20px">
+              検索結果がありません
+            </Typography>
+
+          }
+        </Box>
       </Box>
     </Modal>
   </>
