@@ -33,12 +33,13 @@ const SelectModal = ({setSelectedMeal}) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [filteredMeal, setFilteredMeal] = React.useState(registeredMeal.slice(0, 3))
+  const displayCnt = 3
+  const [filteredMeal, setFilteredMeal] = React.useState(registeredMeal.slice(0, displayCnt))
   const [page, setPage] = React.useState(1)
 
   const handleSearchChange = (e) => {
     if(e.target.value === ""){
-      setFilteredMeal(registeredMeal.slice(0, 3))
+      setFilteredMeal(registeredMeal.slice(0, displayCnt))
       setPage(1)
     }else{
       setFilteredMeal(registeredMeal.filter(meal => 
@@ -49,7 +50,7 @@ const SelectModal = ({setSelectedMeal}) => {
 
   const handleChangePagination = (e, page) => {
     setPage(page)
-    setFilteredMeal(registeredMeal.slice(3*(page-1), 3*page))
+    setFilteredMeal(registeredMeal.slice(displayCnt*(page-1), displayCnt*page))
 
   }
 
@@ -111,7 +112,7 @@ const SelectModal = ({setSelectedMeal}) => {
           {
             filteredMeal.length !== 0 ?
               <Stack direction="row" spacing={2} justifyContent="center" marginTop="10px" marginBottom="10px" >
-                <Pagination count={Math.ceil(registeredMeal.length / 3)} variant="outlined" shape="rounded" page={page} onChange={handleChangePagination} />
+                <Pagination count={Math.ceil(registeredMeal.length / displayCnt)} variant="outlined" shape="rounded" page={page} onChange={handleChangePagination} />
               </Stack>
             :
             <Typography id="noResult" marginTop="20px">

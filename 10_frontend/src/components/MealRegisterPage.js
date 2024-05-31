@@ -1,25 +1,25 @@
+import React from 'react'
 import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider/LocalizationProvider'
-import React from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import SelectModal from './SelectModal'
 import dayjs from 'dayjs';
-import 'dayjs/locale/ja'; 
-import ja from 'dayjs/locale/ja'
+import 'dayjs/locale/ja';
 
 dayjs.locale('ja');
 
 const MealRegisterPage = () => {
   const [selectedMeal, setSelectedMeal] = React.useState({})
+  const [time, setTime] = React.useState('')
 
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={ja}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='ja'>
       <h3 style={{marginLeft: "2%"}}>食事登録</h3>
       <Paper sx={{marginLeft: "30px", marginRight: "30px"}} >
         <Grid container alignItems="center" spacing={2} width="90%" marginLeft="5%">
@@ -39,9 +39,9 @@ const MealRegisterPage = () => {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={age}
+                  value={time}
                   label="time"
-                  // onChange={handleChange}
+                  // onChange={}
                 >
                   <MenuItem value={"morning"}>朝</MenuItem>
                   <MenuItem value={"lunch"}>昼</MenuItem>
@@ -60,7 +60,7 @@ const MealRegisterPage = () => {
                 label="料理名" 
                 variant="outlined" 
                 sx={{ width: "300px"}} 
-                value={selectedMeal.mealName ? selectedMeal.mealName : ""}   
+                value={selectedMeal.mealName ?? ""}   
               />
               <SelectModal setSelectedMeal={setSelectedMeal} />
             </Box>
@@ -74,7 +74,7 @@ const MealRegisterPage = () => {
                 id="calories" 
                 label="熱量" 
                 variant="outlined" 
-                value={selectedMeal.calories ? selectedMeal.calories : ""} 
+                value={selectedMeal.calories ?? ""} 
               />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 kcal
@@ -90,7 +90,7 @@ const MealRegisterPage = () => {
                 id="protein" 
                 label="タンパク質" 
                 variant="outlined"
-                value={selectedMeal.protein ? selectedMeal.protein : ""}  
+                value={selectedMeal.protein ?? ""}  
               />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 g
@@ -106,7 +106,7 @@ const MealRegisterPage = () => {
                 id="fat" 
                 label="脂質" 
                 variant="outlined"
-                value={selectedMeal.fat ? selectedMeal.fat : ""}   
+                value={selectedMeal.fat ?? ""}   
               />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 g
@@ -122,7 +122,7 @@ const MealRegisterPage = () => {
                 id="carbs" 
                 label="炭水化物" 
                 variant="outlined"
-                value={selectedMeal.carbs ? selectedMeal.carbs : ""}   
+                value={selectedMeal.carbs ?? ""}   
               />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 g
@@ -138,7 +138,7 @@ const MealRegisterPage = () => {
                 id="salt" 
                 label="食塩相当量" 
                 variant="outlined"
-                value={selectedMeal.salt ? selectedMeal.salt : ""}    
+                value={selectedMeal.salt ?? ""}    
               />
               <Typography sx={{marginLeft: "1%", marginTop: "30px"}}>
                 g
