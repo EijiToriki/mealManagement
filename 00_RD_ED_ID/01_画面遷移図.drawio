@@ -1,9 +1,15 @@
 <mxfile host="65bd71144e">
     <diagram id="j_3ZSxKP5diQxHW2TGSz" name="Page-1">
-        <mxGraphModel dx="1558" dy="292" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2450" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
+                <mxCell id="256" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="625" y="850" width="80" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="255" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="625" y="810" width="480" height="300" as="geometry"/>
+                </mxCell>
                 <mxCell id="102" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="60" y="430" width="480" height="300" as="geometry"/>
                 </mxCell>
@@ -497,7 +503,7 @@
                     <mxGeometry x="394" y="975" width="86" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="193" value="チェックボックスにチェックを付けたものが照会される&lt;br&gt;デフォルトではすべてにチェックを入れておく" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="473" y="915" width="327" height="50" as="geometry"/>
+                    <mxGeometry x="176.5" y="1040" width="327" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="194" value="✓" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="200" y="935" width="20" height="50" as="geometry"/>
@@ -527,7 +533,7 @@
                     <mxGeometry x="462" y="499" width="120" height="21" as="geometry"/>
                 </mxCell>
                 <mxCell id="205" value="食事履歴は摂取日、料理名、各成分表示を項目として表で出力する。&lt;br&gt;その他は、日ごとの合計で期間指定におけるグラフを出力する。" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="150" y="1030" width="380" height="50" as="geometry"/>
+                    <mxGeometry x="730" y="1010" width="380" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="206" value="料理登録ページ" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" parent="1" vertex="1">
                     <mxGeometry x="20" y="1130" width="120" height="30" as="geometry"/>
@@ -654,6 +660,165 @@
                 </mxCell>
                 <mxCell id="249" value="&lt;span style=&quot;font-size: 11px;&quot;&gt;すべて必須入力&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="371" y="1430" width="107.5" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="250" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="625" y="810" width="480" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="257" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="625" y="850" width="80" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="251" value="食事登録" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="625" y="860" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="252" value="食事照会" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="625" y="900" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="253" value="料理登録" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="625" y="940" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="258" value="ショクカン" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="669" y="815" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="259" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="640" y="825" width="20" height="13" as="geometry"/>
+                </mxCell>
+                <mxCell id="260" value="" style="endArrow=none;html=1;fontSize=16;" edge="1" parent="259">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="20" as="sourcePoint"/>
+                        <mxPoint as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="261" value="" style="endArrow=none;html=1;fontSize=16;" edge="1" parent="259">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="20" y="6" as="sourcePoint"/>
+                        <mxPoint y="6" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="262" value="" style="endArrow=none;html=1;fontSize=16;" edge="1" parent="259">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="20" y="13" as="sourcePoint"/>
+                        <mxPoint y="13" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="263" value="食事照会結果" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="720" y="860" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="264" value="食事履歴" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="745" y="890" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="265" value="" style="shape=table;html=1;whiteSpace=wrap;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fontSize=16;" vertex="1" parent="1">
+                    <mxGeometry x="719" y="921" width="621" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="266" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;fontStyle=1" vertex="1" parent="265">
+                    <mxGeometry width="621" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="267" value="&lt;span style=&quot;font-size: 14px;&quot;&gt;No.&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry width="31" height="20" as="geometry">
+                        <mxRectangle width="31" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="268" value="日付&lt;span style=&quot;white-space: pre;&quot;&gt;&#9;&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry x="31" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="269" value="時間&lt;span style=&quot;white-space: pre;&quot;&gt;&#9;&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry x="111" width="40" height="20" as="geometry">
+                        <mxRectangle width="40" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="270" value="料理名" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry x="151" width="90" height="20" as="geometry">
+                        <mxRectangle width="90" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="300" value="熱量" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry x="241" width="60" height="20" as="geometry">
+                        <mxRectangle width="60" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="302" value="タンパク質" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry x="301" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="304" value="炭水化物" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry x="381" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="308" value="脂質" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry x="461" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="306" value="食塩相当量" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=14;fontStyle=1" vertex="1" parent="266">
+                    <mxGeometry x="541" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="271" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" vertex="1" parent="265">
+                    <mxGeometry y="20" width="621" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="272" value="1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;" vertex="1" parent="271">
+                    <mxGeometry width="31" height="20" as="geometry">
+                        <mxRectangle width="31" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="273" value="2024/06/01" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;" vertex="1" parent="271">
+                    <mxGeometry x="31" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="274" value="昼" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;" vertex="1" parent="271">
+                    <mxGeometry x="111" width="40" height="20" as="geometry">
+                        <mxRectangle width="40" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="275" value="チャーハン" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;fontColor=#0000FF;fontStyle=1" vertex="1" parent="271">
+                    <mxGeometry x="151" width="90" height="20" as="geometry">
+                        <mxRectangle width="90" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="301" value="500" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;fontColor=#0000FF;fontStyle=1" vertex="1" parent="271">
+                    <mxGeometry x="241" width="60" height="20" as="geometry">
+                        <mxRectangle width="60" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="303" value="12" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;fontColor=#0000FF;fontStyle=1" vertex="1" parent="271">
+                    <mxGeometry x="301" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="305" value="40" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;fontColor=#0000FF;fontStyle=1" vertex="1" parent="271">
+                    <mxGeometry x="381" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="309" value="25" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;fontColor=#0000FF;fontStyle=1" vertex="1" parent="271">
+                    <mxGeometry x="461" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="307" value="4.2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontSize=12;fontColor=#0000FF;fontStyle=1" vertex="1" parent="271">
+                    <mxGeometry x="541" width="80" height="20" as="geometry">
+                        <mxRectangle width="80" height="20" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="310" value="熱量" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=0;fontSize=14;" vertex="1" parent="1">
+                    <mxGeometry x="745" y="965" width="70" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="311" value="照会ボタン&lt;br&gt;押下" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="545" y="1030" width="130" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="312" value="" style="endArrow=classic;html=1;fontSize=14;fontColor=#1e1e38;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="200" target="257">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="530" y="552" as="sourcePoint"/>
+                        <mxPoint x="655.9000000000001" y="551.9100000000001" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="313" value="戻る" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fontSize=14;fontColor=#1e1e38;" vertex="1" parent="1">
+                    <mxGeometry x="868.5" y="1080" width="50" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
