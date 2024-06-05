@@ -15,7 +15,16 @@ dayjs.locale("ja");
 
 const MealRegisterPage = () => {
   const [selectedMeal, setSelectedMeal] = React.useState({});
+  const [date, setDate] = React.useState(dayjs())
   const [time, setTime] = React.useState("");
+
+  const handleDate = (newDate) => {
+    setDate(newDate)
+  }
+
+  const handleTime = (e) => {
+    setTime(e.target.value)
+  }
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ja">
@@ -36,8 +45,10 @@ const MealRegisterPage = () => {
               <DatePicker
                 sx={{ width: "210px" }}
                 inputFormat="yyyy年MM月dd日"
+                value={date}
                 locale="ja"
                 mask="____年__月__日"
+                onChange={handleDate}
               />
               <FormControl sx={{ width: "80px", marginLeft: "10px" }}>
                 <InputLabel id="demo-simple-select-label">時間</InputLabel>
@@ -46,11 +57,11 @@ const MealRegisterPage = () => {
                   id="demo-simple-select"
                   value={time}
                   label="time"
-                  // onChange={}
+                  onChange={handleTime}
                 >
-                  <MenuItem value={"morning"}>朝</MenuItem>
-                  <MenuItem value={"lunch"}>昼</MenuItem>
-                  <MenuItem value={"dinner"}>夕</MenuItem>
+                  <MenuItem value={"朝"}>朝</MenuItem>
+                  <MenuItem value={"昼"}>昼</MenuItem>
+                  <MenuItem value={"夜"}>夕</MenuItem>
                 </Select>
               </FormControl>
             </Box>

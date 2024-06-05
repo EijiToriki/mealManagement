@@ -13,8 +13,16 @@ dayjs.locale('ja');
 
 const MealInquiryPage = () => {
   const [btnStatus, setBtnStatus] = React.useState(false)
-  // const [startDate, setStartDate] = React.useState()
-  // const [endDate, setEndDate] = React.useState()
+  const [startDate, setStartDate] = React.useState(dayjs())
+  const [endDate, setEndDate] = React.useState(dayjs())
+
+  const handleStartDate = (newDate) => {
+    setStartDate(newDate)
+  }
+
+  const handleEndDate = (newDate) => {
+    setEndDate(newDate)
+  }
 
   const [checkedItems, setCheckedItems] = React.useState({
     mealHistory: true,
@@ -55,18 +63,22 @@ const MealInquiryPage = () => {
               <Box display="flex" alignItems="center">
                   <DatePicker 
                     sx={{ width: "210px"}}
+                    value={startDate}
                     inputFormat="yyyy年MM月dd日"
                     locale='ja'
                     mask='____年__月__日'
+                    onChange={handleStartDate}
                   />
                   <Typography sx={{marginLeft: "10px", marginRight: "10px"}}>
                     ～
                   </Typography>
                   <DatePicker 
                     sx={{ width: "210px"}}
+                    value={endDate}
                     inputFormat="yyyy年MM月dd日"
                     locale='ja'
                     mask='____年__月__日'
+                    onChange={handleEndDate}
                   />
                 </Box>
               </Grid>
