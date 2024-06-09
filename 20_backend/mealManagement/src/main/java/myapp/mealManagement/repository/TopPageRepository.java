@@ -8,4 +8,8 @@ import java.util.Map;
 @Repository
 public interface TopPageRepository {
     List<Map<String, Object>> get_oneweek_calories();
+
+    List<Map<String, Object>> get_today_nutrition();
+
+    List<Map<String, Object>> get_average_nutrition();
 }
