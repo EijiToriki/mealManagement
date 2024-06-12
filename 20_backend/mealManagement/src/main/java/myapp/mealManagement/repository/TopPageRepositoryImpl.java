@@ -17,7 +17,8 @@ public class TopPageRepositoryImpl implements TopPageRepository{
         String sql = "SELECT date, ROUND(SUM(calories), 1) AS total_calories " +
                     "FROM meal " +
                     "WHERE date >= CURDATE() - INTERVAL 6 DAY " +
-                    "AND date <= CURDATE() GROUP BY date " +
+                    "AND date <= CURDATE() " +
+                    "GROUP BY date " +
                     "ORDER BY date";
 
         return jdbcTemplate.queryForList(sql);
