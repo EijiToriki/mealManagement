@@ -1,5 +1,8 @@
 import React from 'react'
-import { Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import axios from 'axios'
+import { formDict } from '../data/formDict'
+import { Alert, Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const FoodRegisterPage = () => {
   const [food, setFood] = React.useState({
@@ -11,6 +14,9 @@ const FoodRegisterPage = () => {
     salt: ''
   });
 
+  const [emptyItem, setEmptyItem] = React.useState("")
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     const {id, value} = e.target
     setFood((preFood) => ({
@@ -19,12 +25,43 @@ const FoodRegisterPage = () => {
     }))
   }
 
-  const handleSubmit = () => {
-    console.log(food)
+  const handleSubmit = async() => {
+    const foodData = {
+      name: food.mealName,
+      calories: food.calories,
+      protein: food.protein,
+      fat: food.fat,
+      carbs: food.carbs,
+      salt: food.salt
+    };
+
+    let registerFlag = true
+    for(const key in foodData){
+      if(foodData[key] === ""){
+        setEmptyItem(key)
+        registerFlag = false
+        break
+      }
+    }
+
+    if(registerFlag){
+      await axios.post("http://localhost:8080/register_food", foodData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      navigate('/')
+    }
+
   }
   
   return (
     <>
+      {
+        emptyItem &&
+          <Alert severity="error" onClose={() => {setEmptyItem("")}}>{`「${formDict[emptyItem]}」が未入力です`}</Alert>
+
+      }
       <h3 style={{marginLeft: "2%"}}>料理登録</h3>
       <Paper sx={{marginLeft: "30px", marginRight: "30px"}} >
         <Grid container alignItems="center" spacing={2} width="90%" marginLeft="5%">

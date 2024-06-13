@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Alert, Box, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider/LocalizationProvider";
@@ -10,13 +10,19 @@ import Select from "@mui/material/Select";
 import SelectModal from "../components/SelectModal";
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
+import axios from "axios";
+import { formDict } from "../data/formDict";
+import { useNavigate } from "react-router-dom";
 
 dayjs.locale("ja");
 
 const MealRegisterPage = () => {
-  const [selectedMeal, setSelectedMeal] = React.useState({});
+  const [meal, setMeal] = React.useState({});
   const [date, setDate] = React.useState(dayjs())
   const [time, setTime] = React.useState("");
+
+  const [emptyItem, setEmptyItem] = React.useState("")
+  const navigate = useNavigate()
 
   const handleDate = (newDate) => {
     setDate(newDate)
@@ -26,8 +32,53 @@ const MealRegisterPage = () => {
     setTime(e.target.value)
   }
 
+  const handleChange = (e) => {
+    const {id, value} = e.target
+    setMeal((preMeal) => ({
+      ...preMeal,
+      [id]: value
+    }))
+  }
+
+  const handleSubmit = async() =>{
+    const mealData = {
+      date: date,
+      time: time,
+      name: meal.mealName,
+      calories: meal.calories,
+      protein: meal.protein,
+      fat: meal.fat,
+      carbs: meal.carbs,
+      salt: meal.salt
+    };
+
+    let registerFlag = true
+    for(const key in mealData){
+      if(!mealData[key]){
+        setEmptyItem(key)
+        registerFlag = false
+        break
+      }
+    }
+
+    console.log(mealData)
+    if(registerFlag){
+      await axios.post("http://localhost:8080/register_meal", mealData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      navigate('/')
+    }
+  }
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ja">
+      {
+        emptyItem &&
+          <Alert severity="error" onClose={() => {setEmptyItem("")}}>{`「${formDict[emptyItem]}」が未入力です`}</Alert>
+
+      }
       <h3 style={{ marginLeft: "2%" }}>食事登録</h3>
       <Paper sx={{ marginLeft: "30px", marginRight: "30px" }}>
         <Grid
@@ -76,9 +127,10 @@ const MealRegisterPage = () => {
                 label="料理名"
                 variant="outlined"
                 sx={{ width: "300px" }}
-                value={selectedMeal.mealName ?? ""}
+                value={meal.mealName ?? ""}
+                onChange={handleChange}
               />
-              <SelectModal setSelectedMeal={setSelectedMeal} />
+              <SelectModal setMeal={setMeal} />
             </Box>
           </Grid>
           <Grid item xs={2}>
@@ -90,7 +142,8 @@ const MealRegisterPage = () => {
                 id="calories"
                 label="熱量"
                 variant="outlined"
-                value={selectedMeal.calories ?? ""}
+                value={meal.calories ?? ""}
+                onChange={handleChange}
               />
               <Typography sx={{ marginLeft: "1%", marginTop: "30px" }}>
                 kcal
@@ -106,7 +159,8 @@ const MealRegisterPage = () => {
                 id="protein"
                 label="タンパク質"
                 variant="outlined"
-                value={selectedMeal.protein ?? ""}
+                value={meal.protein ?? ""}
+                onChange={handleChange}
               />
               <Typography sx={{ marginLeft: "1%", marginTop: "30px" }}>
                 g
@@ -122,7 +176,8 @@ const MealRegisterPage = () => {
                 id="fat"
                 label="脂質"
                 variant="outlined"
-                value={selectedMeal.fat ?? ""}
+                value={meal.fat ?? ""}
+                onChange={handleChange}
               />
               <Typography sx={{ marginLeft: "1%", marginTop: "30px" }}>
                 g
@@ -138,7 +193,8 @@ const MealRegisterPage = () => {
                 id="carbs"
                 label="炭水化物"
                 variant="outlined"
-                value={selectedMeal.carbs ?? ""}
+                value={meal.carbs ?? ""}
+                onChange={handleChange}
               />
               <Typography sx={{ marginLeft: "1%", marginTop: "30px" }}>
                 g
@@ -154,7 +210,8 @@ const MealRegisterPage = () => {
                 id="salt"
                 label="食塩相当量"
                 variant="outlined"
-                value={selectedMeal.salt ?? ""}
+                value={meal.salt ?? ""}
+                onChange={handleChange}
               />
               <Typography sx={{ marginLeft: "1%", marginTop: "30px" }}>
                 g
@@ -166,6 +223,7 @@ const MealRegisterPage = () => {
               variant="contained"
               sx={{ width: "15%", marginBottom: "10px" }}
               color="success"
+              onClick={handleSubmit}
             >
               登録
             </Button>

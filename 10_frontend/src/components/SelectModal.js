@@ -28,7 +28,7 @@ const contentStyle = {
   marginTop: '16px', // 上の検索部分と少し間隔を空ける
 };
 
-const SelectModal = ({setSelectedMeal}) => {
+const SelectModal = ({setMeal}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -56,7 +56,7 @@ const SelectModal = ({setSelectedMeal}) => {
 
   const handleDecision = (meal) => {
     handleClose()
-    setSelectedMeal(meal)
+    setMeal(meal)
   }
 
   return (

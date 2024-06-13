@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
-public class MealRegisterPageController {
+public class MealRegisterController {
     private final MealRegisterService mealRegisterService;
 
     @GetMapping("/get_all_foods")
