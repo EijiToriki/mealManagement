@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Divider, Grid, Pagination, Stack, TextField } from '@mui/material';
-import { registeredMeal } from '../dummyData/registeredMeal';
 
 const style = {
   position: 'absolute',
@@ -28,12 +27,12 @@ const contentStyle = {
   marginTop: '16px', // 上の検索部分と少し間隔を空ける
 };
 
-const SelectModal = ({setMeal}) => {
+const SelectModal = ({setMeal, registeredMeal}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const displayCnt = 3
+  const displayCnt = 5
   const [filteredMeal, setFilteredMeal] = React.useState(registeredMeal.slice(0, displayCnt))
   const [page, setPage] = React.useState(1)
 
@@ -43,7 +42,7 @@ const SelectModal = ({setMeal}) => {
       setPage(1)
     }else{
       setFilteredMeal(registeredMeal.filter(meal => 
-        meal.mealName.includes(e.target.value)
+        meal.name.includes(e.target.value)
       ))
     }
   }
@@ -94,7 +93,7 @@ const SelectModal = ({setMeal}) => {
               return (
                 <React.Fragment key={index}>
                   <Grid item xs={9}>
-                    <Typography sx={{ marginLeft: '30px' }}>{meal.mealName}</Typography>
+                    <Typography sx={{ marginLeft: '30px' }}>{meal.name}</Typography>
                   </Grid>
                   <Grid item xs={3}>
                     <Button variant="outlined" color="success" onClick={() => handleDecision(meal)} >

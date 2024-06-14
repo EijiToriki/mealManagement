@@ -15,6 +15,7 @@ const FoodRegisterPage = () => {
   });
 
   const [emptyItem, setEmptyItem] = React.useState("")
+  const [notNumItem, setNotNumItem] = React.useState("")
   const navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -44,6 +45,17 @@ const FoodRegisterPage = () => {
       }
     }
 
+    const numericFields = ['calories', 'protein', 'fat', 'carbs', 'salt'];
+    if(registerFlag){
+      for(const key of numericFields) {
+        if(isNaN(foodData[key])) {
+          setNotNumItem(key);
+          registerFlag = false;
+          break;
+        }
+      }
+    }
+
     if(registerFlag){
       await axios.post("http://localhost:8080/register_food", foodData, {
         headers: {
@@ -60,7 +72,10 @@ const FoodRegisterPage = () => {
       {
         emptyItem &&
           <Alert severity="error" onClose={() => {setEmptyItem("")}}>{`「${formDict[emptyItem]}」が未入力です`}</Alert>
-
+      }
+      {
+        notNumItem &&
+        <Alert severity="error" onClose={() => {setNotNumItem("")}}>{`「${formDict[notNumItem]}」は数値で入力してください`}</Alert>
       }
       <h3 style={{marginLeft: "2%"}}>料理登録</h3>
       <Paper sx={{marginLeft: "30px", marginRight: "30px"}} >

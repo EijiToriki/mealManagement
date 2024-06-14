@@ -8,11 +8,29 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
 import { LineChart } from '@mui/x-charts';
-import { xData, yData } from '../dummyData/graphData';
-import { topPageTableData } from '../dummyData/toppageTable';
+import axios from 'axios';
+
 
 
 const TopPage = () => {
+  const [x, setX] = React.useState([])
+  const [y, setY] = React.useState([])
+  const [topPageTableData, setTopPageTableData] = React.useState([])
+
+  React.useEffect(() => {
+    const get_oneweek_calories = async() => {
+      const res = await axios.get("http://localhost:8080/get_oneweek_calories")
+      setX(res.data.dates)
+      setY(res.data.calories)
+    }
+    const get_today_nutrition = async() => {
+      const res = await axios.get("http://localhost:8080/get_today_nutrition")
+      setTopPageTableData(res.data)
+    }
+    get_oneweek_calories()
+    get_today_nutrition()
+   }, [])
+
   return (
     <Grid container alignItems="center" spacing={2} width="95%" marginLeft="2.5%">
       <Grid item xs={8}>
@@ -22,10 +40,10 @@ const TopPage = () => {
               直近の摂取カロリー
             </Typography>
             <LineChart
-              xAxis={[{ data: xData }]}
+              xAxis={[{ scaleType: 'point', data: x }]}
               series={[
                 {
-                  data: yData,
+                  data: y,
                 },
               ]}
               width={500}

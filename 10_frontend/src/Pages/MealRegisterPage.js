@@ -22,7 +22,18 @@ const MealRegisterPage = () => {
   const [time, setTime] = React.useState("");
 
   const [emptyItem, setEmptyItem] = React.useState("")
+  const [notNumItem, setNotNumItem] = React.useState("")
+  const [registeredMeal, setRegisteredMeal] = React.useState([])
   const navigate = useNavigate()
+
+  React.useEffect(() => {
+    const get_all_foods = async() => {
+      const res = await axios.get("http://localhost:8080/get_all_foods")
+      setRegisteredMeal(res.data)
+    }
+    get_all_foods()
+    
+   }, [])
 
   const handleDate = (newDate) => {
     setDate(newDate)
@@ -44,7 +55,7 @@ const MealRegisterPage = () => {
     const mealData = {
       date: date,
       time: time,
-      name: meal.mealName,
+      name: meal.name,
       calories: meal.calories,
       protein: meal.protein,
       fat: meal.fat,
@@ -61,7 +72,17 @@ const MealRegisterPage = () => {
       }
     }
 
-    console.log(mealData)
+    const numericFields = ['calories', 'protein', 'fat', 'carbs', 'salt'];
+    if(registerFlag){
+      for(const key of numericFields) {
+        if(isNaN(mealData[key])) {
+          setNotNumItem(key);
+          registerFlag = false;
+          break;
+        }
+      }
+    }
+
     if(registerFlag){
       await axios.post("http://localhost:8080/register_meal", mealData, {
         headers: {
@@ -77,7 +98,10 @@ const MealRegisterPage = () => {
       {
         emptyItem &&
           <Alert severity="error" onClose={() => {setEmptyItem("")}}>{`「${formDict[emptyItem]}」が未入力です`}</Alert>
-
+      }
+      {
+        notNumItem &&
+        <Alert severity="error" onClose={() => {setNotNumItem("")}}>{`「${formDict[notNumItem]}」は数値で入力してください`}</Alert>
       }
       <h3 style={{ marginLeft: "2%" }}>食事登録</h3>
       <Paper sx={{ marginLeft: "30px", marginRight: "30px" }}>
@@ -123,14 +147,14 @@ const MealRegisterPage = () => {
           <Grid item xs={10}>
             <Box display="flex" alignItems="center">
               <TextField
-                id="mealName"
+                id="name"
                 label="料理名"
                 variant="outlined"
                 sx={{ width: "300px" }}
-                value={meal.mealName ?? ""}
+                value={meal.name ?? ""}
                 onChange={handleChange}
               />
-              <SelectModal setMeal={setMeal} />
+              <SelectModal setMeal={setMeal} registeredMeal={registeredMeal} />
             </Box>
           </Grid>
           <Grid item xs={2}>
