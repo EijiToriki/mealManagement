@@ -110,7 +110,7 @@ const MealInquiryPage = () => {
           </Paper>
         </LocalizationProvider>
         :
-        <MealInquiryResultPage handleReturnBtn={handleReturnBtn} checkedItems={checkedItems} />
+        <MealInquiryResultPage handleReturnBtn={handleReturnBtn} checkedItems={checkedItems} startDate={startDate} endDate={endDate} />
 
     }
     </>

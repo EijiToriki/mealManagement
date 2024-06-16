@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import { rows } from '../dummyData/inquiryTableData';
 import { Typography } from '@mui/material';
 
-const MealInquiryTable = ({flag}) => {
+const MealInquiryTable = ({flag, mealHistory}) => {
   return (
     <>
     {
@@ -33,7 +33,7 @@ const MealInquiryTable = ({flag}) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row, index) => (
+            {mealHistory.map((row, index) => (
               <TableRow
                 key={index}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

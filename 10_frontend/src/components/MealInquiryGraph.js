@@ -13,15 +13,15 @@ const MealInquiryGraph = ({flag, title, xData, yData}) => {
             {title}
           </Typography>
           <LineChart
-            xAxis={[{ data: xData }]}
-            series={[
-              {
-                data: yData,
-              },
-            ]}
-            width={500}
-            height={300}
-          />
+              xAxis={[{ scaleType: 'point', data: xData }]}
+              series={[
+                {
+                  data: yData,
+                },
+              ]}
+              width={500}
+              height={300}
+            />
         </Paper>
       </Box>
       }
