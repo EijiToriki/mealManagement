@@ -16,6 +16,7 @@ const TopPage = () => {
   const [x, setX] = React.useState([])
   const [y, setY] = React.useState([])
   const [topPageTableData, setTopPageTableData] = React.useState([])
+  const [achieveDay, setAchieveDay] = React.useState(0)
 
   React.useEffect(() => {
     const get_oneweek_calories = async() => {
@@ -27,8 +28,13 @@ const TopPage = () => {
       const res = await axios.get("http://localhost:8080/get_today_nutrition")
       setTopPageTableData(res.data)
     }
+    const get_achievement_day = async() => {
+      const res = await axios.get("http://localhost:8080/get_achievement_day")
+      setAchieveDay(res.data)
+    }
     get_oneweek_calories()
     get_today_nutrition()
+    get_achievement_day()
    }, [])
 
   return (
@@ -59,7 +65,7 @@ const TopPage = () => {
               連続目標達成記録
             </Typography>
             <Typography variant="h3" color="blue" fontWeight="bold">
-              3日
+              {achieveDay}日
             </Typography>
           </Box>
         </Paper>

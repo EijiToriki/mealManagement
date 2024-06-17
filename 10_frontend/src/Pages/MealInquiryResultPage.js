@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Grid } from '@mui/material'
 import MealInquiryGraph from '../components/MealInquiryGraph'
-import { xData, yData } from '../dummyData/graphData'
 import MealInquiryTable from '../components/MealInquiryTable'
 import axios from 'axios'
 
@@ -16,12 +15,16 @@ const MealInquiryResultPage = ({handleReturnBtn, checkedItems, startDate, endDat
 
   React.useEffect(() => {
     const get_dairy_data = async() => {
+      console.log(startDate)
+
+      const formattedStartDate = `${startDate.$y}-${(startDate.$M+1).toString().padStart(2, '0')}-${startDate.$D.toString().padStart(2, '0')}`
+      const formattedEndDate = `${endDate.$y}-${(endDate.$M+1).toString().padStart(2, '0')}-${endDate.$D.toString().padStart(2, '0')}`
+
       const params = {
-        startDate: "2024-06-07",
-        endDate: "2024-06-11"
+        startDate: formattedStartDate,
+        endDate: formattedEndDate
       }
       const res = await axios.get("http://localhost:8080/get_dairy_data", {params})
-      console.log(res.data)
       setDates(res.data.dates)
       setMealHistory(res.data.mealHistory)
       setCalories(res.data.calories)
