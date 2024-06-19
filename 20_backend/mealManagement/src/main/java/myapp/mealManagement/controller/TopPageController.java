@@ -30,4 +30,9 @@ public class TopPageController {
         return topPageService.get_today_nutrition();
     }
 
+    @GetMapping("/get_achievement_day")
+    public int get_achievement_day() {
+        return topPageService.get_achievement_day();
+    }
+
 }

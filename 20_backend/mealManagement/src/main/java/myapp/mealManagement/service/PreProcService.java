@@ -27,8 +27,7 @@ public class PreProcService {
                     (double) queryResult.get("protein"),
                     (double) queryResult.get("carbs"),
                     (double) queryResult.get("fat"),
-                    (double) queryResult.get("salt"),
-                    (Timestamp) queryResult.get("created_at")
+                    (double) queryResult.get("salt")
             );
             foods.add(itemEntity);
         }

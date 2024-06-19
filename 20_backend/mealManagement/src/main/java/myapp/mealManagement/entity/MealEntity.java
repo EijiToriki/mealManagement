@@ -3,12 +3,14 @@ package myapp.mealManagement.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 @AllArgsConstructor
 @Data
-public class FoodEntity {
+public class MealEntity {
     private int id;
+    private Date date;
+    private String time;
     private String name;
     private double calories;
     private double protein;

@@ -89,6 +89,44 @@ public class TopPageService {
     }
 
 
+    public int get_achievement_day(){
+        // 目標値の取得
+        List<Map<String, Object>> queryAverageResults = topPageRepository.get_average_nutrition();
+        Map<String, Double> nutritionMap = new HashMap<>();
+        for(Map<String, Object> queryResult : queryAverageResults){
+            nutritionMap.put(
+                    (String) queryResult.get("nutrients"),
+                    (Double) queryResult.get("quantity")
+            );
+        }
+
+        Boolean achiveFlag = true;
+        int achieveDay = 0;
+        LocalDate inquiryDay = LocalDate.now().minusDays(1);
+        while (true){
+            List<Map<String, Object>> queryOneDayResults = topPageRepository.get_oneday_nutrition(inquiryDay);
+            Map<String, Object> oneDayMap = queryOneDayResults.get(0);
+
+            for(Map.Entry<String, Object> entry: oneDayMap.entrySet()){
+                String key = entry.getKey();
+                if(!judgeBorder(nutritionMap.get(key), (Double) oneDayMap.get(key)).equals("ok")){
+                    achiveFlag = false;
+                }
+            }
+
+            if(achiveFlag){
+                achieveDay++;
+                inquiryDay = inquiryDay.minusDays(1);
+            }else{
+                break;
+            }
+        }
+
+
+        return achieveDay;
+    }
+
+
     public static List<Date> generatePastWeekDates() {
         List<Date> dateList = new ArrayList<>();
         LocalDate today = LocalDate.now();
