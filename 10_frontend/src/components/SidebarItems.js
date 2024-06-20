@@ -4,7 +4,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import DeleteIcon from '@mui/icons-material/Delete';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from 'react-router-dom';
 
 const SidebarItems = () => {
@@ -12,6 +14,12 @@ const SidebarItems = () => {
   
   return (
     <>
+      <ListItemButton onClick={() => navigate('/')}>
+        <ListItemIcon>
+          <HomeIcon />
+        </ListItemIcon>
+        <ListItemText primary="TOP" />
+      </ListItemButton>
       <ListItemButton onClick={() => navigate('/meal_register')}>
         <ListItemIcon>
           <PlaylistAddIcon />
@@ -29,6 +37,12 @@ const SidebarItems = () => {
           <MenuBookIcon />
         </ListItemIcon>
         <ListItemText primary="料理登録" />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate('/delete')}>
+        <ListItemIcon>
+          <DeleteIcon />
+        </ListItemIcon>
+        <ListItemText primary="削除" />
       </ListItemButton>
     </>
   )

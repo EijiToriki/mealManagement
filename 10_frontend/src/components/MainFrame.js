@@ -17,6 +17,7 @@ import TopPage from "../Pages/TopPage";
 import MealRegisterPage from "../Pages/MealRegisterPage";
 import FoodRegisterPage from "../Pages/FoodRegisterPage";
 import MealInquiryPage from "../Pages/MealInquiryPage";
+import DeletePage from "../Pages/DeletePage";
 
 const drawerWidth = 240;
 
@@ -145,6 +146,7 @@ export default function MainPage() {
             <Route exact path="/meal_register" element={<MealRegisterPage />} />
             <Route exact path="/meal_inquiry" element={<MealInquiryPage />} />
             <Route exact path="/food_register" element={<FoodRegisterPage />} />
+            <Route exact path="/delete" element={<DeletePage />} />
           </Routes>
         </Box>
       </Box>

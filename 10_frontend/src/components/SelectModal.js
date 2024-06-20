@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Divider, Grid, Pagination, Stack, TextField } from '@mui/material';
+import axios from 'axios';
 
 const style = {
   position: 'absolute',
@@ -27,14 +28,24 @@ const contentStyle = {
   marginTop: '16px', // 上の検索部分と少し間隔を空ける
 };
 
-const SelectModal = ({setMeal, registeredMeal}) => {
+const SelectModal = ({setMeal}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const displayCnt = 5
-  const [filteredMeal, setFilteredMeal] = React.useState(registeredMeal.slice(0, displayCnt))
+  const [registeredMeal, setRegisteredMeal] = React.useState([])
+  const [filteredMeal, setFilteredMeal] = React.useState([])
   const [page, setPage] = React.useState(1)
+
+
+  React.useEffect(() => {
+    const get_all_foods = async() => {
+      const res = await axios.get("http://localhost:8080/get_all_foods")
+      setRegisteredMeal(res.data)
+      setFilteredMeal(res.data.slice(0, displayCnt))
+    }
+    get_all_foods()
+   }, [])
 
   const handleSearchChange = (e) => {
     if(e.target.value === ""){
@@ -50,7 +61,6 @@ const SelectModal = ({setMeal, registeredMeal}) => {
   const handleChangePagination = (e, page) => {
     setPage(page)
     setFilteredMeal(registeredMeal.slice(displayCnt*(page-1), displayCnt*page))
-
   }
 
   const handleDecision = (meal) => {
@@ -117,7 +127,6 @@ const SelectModal = ({setMeal, registeredMeal}) => {
             <Typography id="noResult" marginTop="20px">
               検索結果がありません
             </Typography>
-
           }
         </Box>
       </Box>

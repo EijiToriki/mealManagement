@@ -23,17 +23,7 @@ const MealRegisterPage = () => {
 
   const [emptyItem, setEmptyItem] = React.useState("")
   const [notNumItem, setNotNumItem] = React.useState("")
-  const [registeredMeal, setRegisteredMeal] = React.useState([])
   const navigate = useNavigate()
-
-  React.useEffect(() => {
-    const get_all_foods = async() => {
-      const res = await axios.get("http://localhost:8080/get_all_foods")
-      setRegisteredMeal(res.data)
-    }
-    get_all_foods()
-    
-   }, [])
 
   const handleDate = (newDate) => {
     setDate(newDate)
@@ -154,7 +144,7 @@ const MealRegisterPage = () => {
                 value={meal.name ?? ""}
                 onChange={handleChange}
               />
-              <SelectModal setMeal={setMeal} registeredMeal={registeredMeal} />
+              <SelectModal setMeal={setMeal} />
             </Box>
           </Grid>
           <Grid item xs={2}>
