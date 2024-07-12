@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import { Typography } from '@mui/material';
 import { LineChart } from '@mui/x-charts';
 import axios from 'axios';
+import { URL } from '../data/constants';
 
 
 
@@ -20,16 +21,16 @@ const TopPage = () => {
 
   React.useEffect(() => {
     const get_oneweek_calories = async() => {
-      const res = await axios.get("http://localhost:8080/get_oneweek_calories")
+      const res = await axios.get(URL + "/get_oneweek_calories")
       setX(res.data.dates)
       setY(res.data.calories)
     }
     const get_today_nutrition = async() => {
-      const res = await axios.get("http://localhost:8080/get_today_nutrition")
+      const res = await axios.get(URL + "/get_today_nutrition")
       setTopPageTableData(res.data)
     }
     const get_achievement_day = async() => {
-      const res = await axios.get("http://localhost:8080/get_achievement_day")
+      const res = await axios.get(URL + "/get_achievement_day")
       setAchieveDay(res.data)
     }
     get_oneweek_calories()

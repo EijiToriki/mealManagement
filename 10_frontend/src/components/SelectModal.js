@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Divider, Grid, Pagination, Stack, TextField } from '@mui/material';
 import axios from 'axios';
+import { URL } from '../data/constants';
 
 const style = {
   position: 'absolute',
@@ -40,7 +41,7 @@ const SelectModal = ({setMeal}) => {
 
   React.useEffect(() => {
     const get_all_foods = async() => {
-      const res = await axios.get("http://localhost:8080/get_all_foods")
+      const res = await axios.get(URL + "/get_all_foods")
       setRegisteredMeal(res.data)
       setFilteredMeal(res.data.slice(0, displayCnt))
     }

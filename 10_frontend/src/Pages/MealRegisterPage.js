@@ -13,6 +13,7 @@ import "dayjs/locale/ja";
 import axios from "axios";
 import { formDict } from "../data/formDict";
 import { useNavigate } from "react-router-dom";
+import { URL } from "../data/constants";
 
 dayjs.locale("ja");
 
@@ -74,7 +75,7 @@ const MealRegisterPage = () => {
     }
 
     if(registerFlag){
-      await axios.post("http://localhost:8080/register_meal", mealData, {
+      await axios.post(URL + "/register_meal", mealData, {
         headers: {
           'Content-Type': 'application/json'
         }

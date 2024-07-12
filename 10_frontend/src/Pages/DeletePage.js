@@ -7,6 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { URL } from '../data/constants';
 
 const DeletePage = () => {
   const displayCnt = 5
@@ -21,7 +22,7 @@ const DeletePage = () => {
 
   React.useEffect(() => {
     const get_all_meal_food = async() => {
-      const res = await axios.get("http://localhost:8080/get_all_meal_food")
+      const res = await axios.get(URL + "/get_all_meal_food")
       setRegisteredMeal(res.data.mealEntities)
       setRegisteredFood(res.data.foodEntities)
       setFilteredFood(res.data.foodEntities.slice(0, displayCnt))
@@ -40,7 +41,7 @@ const DeletePage = () => {
       const params = {
         id: id
       }
-      await axios.delete("http://localhost:8080/delete_one_food", {params})  
+      await axios.delete(URL + "/delete_one_food", {params})  
       setRegisteredFood(prevRegisteredFood => prevRegisteredFood.filter(food => food.id !== id));
 
       const newRegisteredFood = registeredFood.filter(food => food.id !== id);
@@ -63,7 +64,7 @@ const DeletePage = () => {
       const params = {
         id: id
       }
-      await axios.delete("http://localhost:8080/delete_one_meal", {params})  
+      await axios.delete(URL + "/delete_one_meal", {params})  
       setRegisteredMeal(prevRegisteredMeal => prevRegisteredMeal.filter(meal => meal.id !== id));
       const newRegisteredMeal = registeredMeal.filter(meal => meal.id !== id);
       const newPage = page > Math.ceil(newRegisteredMeal.length / displayCnt) ? page - 1 : page;

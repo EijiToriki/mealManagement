@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="20_backend:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/20_backend_jar</output-path>
+    <root id="archive" name="20_backend.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

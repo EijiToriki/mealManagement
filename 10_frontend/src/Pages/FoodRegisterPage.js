@@ -3,6 +3,7 @@ import axios from 'axios'
 import { formDict } from '../data/formDict'
 import { Alert, Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { URL } from '../data/constants'
 
 const FoodRegisterPage = () => {
   const [food, setFood] = React.useState({
@@ -57,7 +58,7 @@ const FoodRegisterPage = () => {
     }
 
     if(registerFlag){
-      await axios.post("http://localhost:8080/register_food", foodData, {
+      await axios.post(URL + "/register_food", foodData, {
         headers: {
           'Content-Type': 'application/json'
         }

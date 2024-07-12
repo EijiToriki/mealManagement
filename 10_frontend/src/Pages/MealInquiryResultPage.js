@@ -3,6 +3,7 @@ import { Button, Grid } from '@mui/material'
 import MealInquiryGraph from '../components/MealInquiryGraph'
 import MealInquiryTable from '../components/MealInquiryTable'
 import axios from 'axios'
+import { URL } from '../data/constants'
 
 const MealInquiryResultPage = ({handleReturnBtn, checkedItems, startDate, endDate}) => {
   const [dates, setDates] = React.useState([])
@@ -24,7 +25,7 @@ const MealInquiryResultPage = ({handleReturnBtn, checkedItems, startDate, endDat
         startDate: formattedStartDate,
         endDate: formattedEndDate
       }
-      const res = await axios.get("http://localhost:8080/get_dairy_data", {params})
+      const res = await axios.get(URL + "/get_dairy_data", {params})
       setDates(res.data.dates)
       setMealHistory(res.data.mealHistory)
       setCalories(res.data.calories)
