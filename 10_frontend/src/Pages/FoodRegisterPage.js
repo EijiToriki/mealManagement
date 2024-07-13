@@ -63,7 +63,7 @@ const FoodRegisterPage = () => {
           'Content-Type': 'application/json'
         }
       })
-      navigate('/')
+      navigate('/top')
     }
 
   }

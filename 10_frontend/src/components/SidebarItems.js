@@ -14,7 +14,7 @@ const SidebarItems = () => {
   
   return (
     <>
-      <ListItemButton onClick={() => navigate('/')}>
+      <ListItemButton onClick={() => navigate('/top')}>
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>

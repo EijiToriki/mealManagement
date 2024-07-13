@@ -104,7 +104,7 @@ export default function MainPage() {
               noWrap
               fontWeight="bold"
               sx={{ flexGrow: 1 }}
-              onClick={() => navigate("/")}
+              onClick={() => navigate('/top')}
             >
               ショクカン ~ 食事管理アプリ ~
             </Typography>
@@ -142,7 +142,8 @@ export default function MainPage() {
         >
           <Toolbar />
           <Routes>
-            <Route exact path="/" element={<TopPage />} />
+            
+            <Route exact path="/top" element={<TopPage />} />
             <Route exact path="/meal_register" element={<MealRegisterPage />} />
             <Route exact path="/meal_inquiry" element={<MealInquiryPage />} />
             <Route exact path="/food_register" element={<FoodRegisterPage />} />

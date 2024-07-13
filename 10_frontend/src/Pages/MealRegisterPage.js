@@ -80,7 +80,7 @@ const MealRegisterPage = () => {
           'Content-Type': 'application/json'
         }
       })
-      navigate('/')
+      navigate('/top')
     }
   }
 
