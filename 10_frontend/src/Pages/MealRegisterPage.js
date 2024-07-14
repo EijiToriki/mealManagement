@@ -14,10 +14,13 @@ import axios from "axios";
 import { formDict } from "../data/formDict";
 import { useNavigate } from "react-router-dom";
 import { URL } from "../data/constants";
+import { useSelector } from "react-redux";
 
 dayjs.locale("ja");
 
 const MealRegisterPage = () => {
+  const userId = useSelector(state => state.authorize.user_id)
+
   const [meal, setMeal] = React.useState({});
   const [date, setDate] = React.useState(dayjs())
   const [time, setTime] = React.useState("");

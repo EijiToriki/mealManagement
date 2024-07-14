@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { URL } from '../data/constants';
+import { useSelector } from 'react-redux';
 
 const DeletePage = () => {
   const displayCnt = 5
@@ -19,6 +20,7 @@ const DeletePage = () => {
   const [deleteInfo, setDeleteInfo] = React.useState({})
   const [page, setPage] = React.useState(1)
 
+  const userId = useSelector(state => state.authorize.user_id)
 
   React.useEffect(() => {
     const get_all_meal_food = async() => {

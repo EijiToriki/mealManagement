@@ -4,8 +4,11 @@ import { formDict } from '../data/formDict'
 import { Alert, Box, Button, Grid, Paper, TextField, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { URL } from '../data/constants'
+import { useSelector } from 'react-redux'
 
 const FoodRegisterPage = () => {
+  const userId = useSelector(state => state.authorize.user_id)
+
   const [food, setFood] = React.useState({
     mealName: '',
     calories: '',

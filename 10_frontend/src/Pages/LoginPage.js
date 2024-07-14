@@ -10,20 +10,49 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { URL } from '../data/constants';
+import { useDispatch } from 'react-redux'
+import { login } from '../redux/authorizeSlice';
+import { Alert } from '@mui/material';
 
 const defaultTheme = createTheme();
 
 export default function LoginPage() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('userName'),
-      password: data.get('password'),
-    });
-  };
+  const [userName, setUserName] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [loginAlertFlag, setLoginAlertFlag] = React.useState(false)
 
+  const dispatch = useDispatch();
   const navigate = useNavigate()
+
+  const changeUserName = (event) => {
+    setUserName(event.target.value)
+  }
+
+  const changePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
+  const handleSubmit = async() => {
+    const params = {
+      name: userName,
+      password: password,
+    };
+
+    try {
+      const res = await axios.get(URL + "/get_user", {params})
+      if(res.data > 0){
+        const action = login(res.data)
+        dispatch(action)
+        navigate('/top')
+      }else{
+        setLoginAlertFlag(true)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const clickNewRegister = () => {
     navigate('/sign')
@@ -31,6 +60,12 @@ export default function LoginPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+        {
+        loginAlertFlag &&
+          <Alert severity="error" sx={{marginTop: "60px"}} onClose={() => {setLoginAlertFlag(false)}}>
+            ユーザ名・パスワードのいずれかが誤っています。
+          </Alert>
+        }
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -57,6 +92,7 @@ export default function LoginPage() {
               name="userName"
               autoComplete="ユーザ名"
               autoFocus
+              onChange={changeUserName}
             />
             <TextField
               margin="normal"
@@ -67,6 +103,7 @@ export default function LoginPage() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={changePassword}
             />
             <Button
               onClick={handleSubmit}

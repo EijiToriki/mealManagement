@@ -18,6 +18,9 @@ import MealRegisterPage from "../Pages/MealRegisterPage";
 import FoodRegisterPage from "../Pages/FoodRegisterPage";
 import MealInquiryPage from "../Pages/MealInquiryPage";
 import DeletePage from "../Pages/DeletePage";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/authorizeSlice";
 
 const drawerWidth = 240;
 
@@ -74,6 +77,13 @@ export default function MainPage() {
     setOpen(!open);
   };
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    const action = logout()
+    dispatch(action)
+    navigate('/')
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -108,6 +118,16 @@ export default function MainPage() {
             >
               ショクカン ~ 食事管理アプリ ~
             </Typography>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleLogout}
+              sx={{
+                marginRight: "36px",
+              }}
+            >
+              <LogoutIcon />
+            </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>

@@ -4,8 +4,11 @@ import MealInquiryGraph from '../components/MealInquiryGraph'
 import MealInquiryTable from '../components/MealInquiryTable'
 import axios from 'axios'
 import { URL } from '../data/constants'
+import { useSelector } from 'react-redux'
 
 const MealInquiryResultPage = ({handleReturnBtn, checkedItems, startDate, endDate}) => {
+  const userId = useSelector(state => state.authorize.user_id)
+
   const [dates, setDates] = React.useState([])
   const [mealHistory, setMealHistory] = React.useState([])
   const [calories, setCalories] = React.useState([])

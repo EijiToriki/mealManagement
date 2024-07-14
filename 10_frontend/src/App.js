@@ -5,14 +5,15 @@ import MainFrame from "./components/MainFrame";
 import LoginPage from "./Pages/LoginPage";
 import LoginHeader from "./components/LoginHeader";
 import SignPage from "./Pages/SignPage";
+import { useSelector } from "react-redux";
 
 
 function App() {
-  const [login, setLogin] = React.useState(false)
+  const userId = useSelector(state => state.authorize.user_id)
   return (
     <BrowserRouter>
       {
-        login ?
+        userId > 0 ?
           <MainFrame />
         :
           <>
