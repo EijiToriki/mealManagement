@@ -26,11 +26,13 @@ const MealInquiryResultPage = ({handleReturnBtn, checkedItems, startDate, endDat
 
       const params = {
         startDate: formattedStartDate,
-        endDate: formattedEndDate
+        endDate: formattedEndDate,
+        user_id: userId
       }
       const res = await axios.get(URL + "/get_dairy_data", {params})
       setDates(res.data.dates)
       setMealHistory(res.data.mealHistory)
+      console.log(res.data.mealHistory)
       setCalories(res.data.calories)
       setProteins(res.data.proteins)
       setCarbs(res.data.carbs)

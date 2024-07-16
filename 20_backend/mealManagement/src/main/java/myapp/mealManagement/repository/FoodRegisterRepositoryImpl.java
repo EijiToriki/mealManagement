@@ -17,9 +17,10 @@ public class FoodRegisterRepositoryImpl implements FoodRegisterRepository{
 
     @Override
     public int register_food(RegisterFoodRequestEntity registerFoodRequestEntity){
-        String sql = "insert into food (name, calories, protein, carbs, fat, salt, created_at) " +
-                "values (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into food (user_id, name, calories, protein, carbs, fat, salt, created_at) " +
+                "values (?, ?, ?, ?, ?, ?, ?, ?)";
 
+        int user_id = registerFoodRequestEntity.getUser_id();
         String name = registerFoodRequestEntity.getName();
         double calories = registerFoodRequestEntity.getCalories();
         double protein = registerFoodRequestEntity.getProtein();
@@ -30,7 +31,7 @@ public class FoodRegisterRepositoryImpl implements FoodRegisterRepository{
         Date now = new Date();
         Timestamp created_at = new Timestamp(now.getTime());
 
-        return jdbcTemplate.update(sql, name, calories, protein, carbs, fat, salt, created_at);
+        return jdbcTemplate.update(sql, user_id, name, calories, protein, carbs, fat, salt, created_at);
     }
 
 }

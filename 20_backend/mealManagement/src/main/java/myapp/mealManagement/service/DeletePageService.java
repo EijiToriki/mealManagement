@@ -14,8 +14,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class DeletePageService {
     private final DeletePageRepository deletePageRepository;
-    public FoodAndMealResponseEntity get_all_meal_food(){
-        Map<String, List<Map<String, Object>>> queryRslt = deletePageRepository.get_all_meal_food();
+    public FoodAndMealResponseEntity get_all_meal_food(int user_id){
+        Map<String, List<Map<String, Object>>> queryRslt = deletePageRepository.get_all_meal_food(user_id);
 
         List<Map<String, Object>> foodRslts = queryRslt.get("food");
         List<FoodEntity> foodEntities = new ArrayList<>();

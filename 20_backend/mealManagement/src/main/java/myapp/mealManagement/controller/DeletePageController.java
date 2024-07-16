@@ -15,8 +15,8 @@ public class DeletePageController {
     private final DeletePageService deletePageService;
 
     @GetMapping("get_all_meal_food")
-    public FoodAndMealResponseEntity get_all_meal_food(){
-        return deletePageService.get_all_meal_food();
+    public FoodAndMealResponseEntity get_all_meal_food(@RequestParam int user_id){
+        return deletePageService.get_all_meal_food(user_id);
     }
 
     @DeleteMapping("delete_one_meal")

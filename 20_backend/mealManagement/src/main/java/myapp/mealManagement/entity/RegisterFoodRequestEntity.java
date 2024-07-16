@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 public class RegisterFoodRequestEntity {
+    private int user_id;
     private String name;
     private double calories;
     private double protein;

@@ -10,6 +10,7 @@ import { Typography } from '@mui/material';
 import { LineChart } from '@mui/x-charts';
 import axios from 'axios';
 import { URL } from '../data/constants';
+import { useSelector } from 'react-redux';
 
 
 
@@ -19,23 +20,28 @@ const TopPage = () => {
   const [topPageTableData, setTopPageTableData] = React.useState([])
   const [achieveDay, setAchieveDay] = React.useState(0)
 
+  const userId = useSelector(state => state.authorize.user_id)
+
   React.useEffect(() => {
-    const get_oneweek_calories = async() => {
-      const res = await axios.get(URL + "/get_oneweek_calories")
+    const get_oneweek_calories = async(params) => {
+      const res = await axios.get(URL + "/get_oneweek_calories", {params})
       setX(res.data.dates)
       setY(res.data.calories)
     }
-    const get_today_nutrition = async() => {
-      const res = await axios.get(URL + "/get_today_nutrition")
+    const get_today_nutrition = async(params) => {
+      const res = await axios.get(URL + "/get_today_nutrition", {params})
       setTopPageTableData(res.data)
     }
-    const get_achievement_day = async() => {
-      const res = await axios.get(URL + "/get_achievement_day")
+    const get_achievement_day = async(params) => {
+      const res = await axios.get(URL + "/get_achievement_day", {params})
       setAchieveDay(res.data)
     }
-    get_oneweek_calories()
-    get_today_nutrition()
-    get_achievement_day()
+    const params = {
+      user_id: userId
+    }
+    get_oneweek_calories(params)
+    get_today_nutrition(params)
+    get_achievement_day(params)
    }, [])
 
   return (

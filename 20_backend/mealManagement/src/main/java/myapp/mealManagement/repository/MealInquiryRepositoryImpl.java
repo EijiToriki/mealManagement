@@ -14,15 +14,15 @@ public class MealInquiryRepositoryImpl implements MealInquiryRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<Map<String, Object>> get_meal_history(LocalDate startDate, LocalDate endDate){
+    public List<Map<String, Object>> get_meal_history(LocalDate startDate, LocalDate endDate, int user_id){
         String sql = "SELECT date, time, name, calories, protein, fat, carbs, salt " +
-                    "FROM meal WHERE date BETWEEN ? AND ? ORDER BY date ASC";
+                    "FROM meal WHERE user_id = ? AND date BETWEEN ? AND ? ORDER BY date ASC";
 
-        return jdbcTemplate.queryForList(sql, startDate, endDate);
+        return jdbcTemplate.queryForList(sql, user_id, startDate, endDate);
     }
 
     @Override
-    public List<Map<String, Object>> get_dairy_data(LocalDate startDate, LocalDate endDate) {
+    public List<Map<String, Object>> get_dairy_data(LocalDate startDate, LocalDate endDate, int user_id) {
         String sql = "SELECT date, " +
                 "ROUND(SUM(calories), 1) AS total_calories, " +
                 "ROUND(SUM(protein), 1) AS total_protein, " +
@@ -30,10 +30,10 @@ public class MealInquiryRepositoryImpl implements MealInquiryRepository {
                 "ROUND(SUM(carbs), 1) AS total_carbs, " +
                 "ROUND(SUM(salt), 1) AS total_salt " +
                 "FROM meal " +
-                "WHERE date BETWEEN ? AND ? " +
+                "WHERE user_id = ? AND  date BETWEEN ? AND ? " +
                 "GROUP BY date " +
                 "ORDER BY date ASC";
 
-        return jdbcTemplate.queryForList(sql, startDate, endDate);
+        return jdbcTemplate.queryForList(sql, user_id, startDate, endDate);
     }
 }

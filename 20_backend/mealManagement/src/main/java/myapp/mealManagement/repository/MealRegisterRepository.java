@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Repository
 public interface MealRegisterRepository {
-    List<Map<String, Object>> get_all_foods();
+    List<Map<String, Object>> get_all_foods(int user_id);
 
     int register_meal(RegisterMealRequestEntity registerMealRequestEntity);
 }

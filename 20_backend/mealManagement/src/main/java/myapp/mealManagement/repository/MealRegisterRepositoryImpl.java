@@ -18,16 +18,17 @@ public class MealRegisterRepositoryImpl implements MealRegisterRepository{
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<Map<String, Object>> get_all_foods(){
-        String sql = "select name, calories, protein, carbs, fat, salt from food";
-        return jdbcTemplate.queryForList(sql);
+    public List<Map<String, Object>> get_all_foods(int user_id){
+        String sql = "select name, calories, protein, carbs, fat, salt from food where user_id = ?";
+        return jdbcTemplate.queryForList(sql, user_id);
     }
 
     @Override
     public int register_meal(RegisterMealRequestEntity registerMealRequestEntity){
-        String sql = "insert into meal (date, time, name, calories, protein, carbs, fat, salt, created_at) " +
-                "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into meal (user_id, date, time, name, calories, protein, carbs, fat, salt, created_at) " +
+                "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+        int user_id = registerMealRequestEntity.getUser_id();
         LocalDate date = registerMealRequestEntity.getDate();
         String time = registerMealRequestEntity.getTime();
         String name = registerMealRequestEntity.getName();
@@ -40,6 +41,6 @@ public class MealRegisterRepositoryImpl implements MealRegisterRepository{
         Date now = new Date();
         Timestamp created_at = new Timestamp(now.getTime());
 
-        return jdbcTemplate.update(sql, date, time, name, calories, protein, carbs, fat, salt, created_at);
+        return jdbcTemplate.update(sql, user_id, date, time, name, calories, protein, carbs, fat, salt, created_at);
     }
 }

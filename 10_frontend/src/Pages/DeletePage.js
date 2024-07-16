@@ -24,7 +24,10 @@ const DeletePage = () => {
 
   React.useEffect(() => {
     const get_all_meal_food = async() => {
-      const res = await axios.get(URL + "/get_all_meal_food")
+      const params = {
+        user_id: userId
+      }
+      const res = await axios.get(URL + "/get_all_meal_food", {params})
       setRegisteredMeal(res.data.mealEntities)
       setRegisteredFood(res.data.foodEntities)
       setFilteredFood(res.data.foodEntities.slice(0, displayCnt))
@@ -159,7 +162,7 @@ const DeletePage = () => {
         <Paper sx={{ marginLeft: "45px", marginRight: "30px", marginTop: "5px" }}>
           <TableContainer component={Paper} sx={{margin: "0 auto", marginBottom: "20px"}}>
               <Typography variant="h6" sx={{padding: "10px"}}>
-                料理一覧
+                食事一覧
               </Typography>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
@@ -204,7 +207,7 @@ const DeletePage = () => {
               <Pagination count={Math.ceil(registeredFood.length / displayCnt)} variant="outlined" shape="rounded" page={page} onChange={handleChangePagination} />
             </Stack>
           :
-          <Typography id="noResult" marginTop="20px">
+          <Typography id="noResult" marginTop="20px" marginLeft="55px" fontWeight="bold">
             データがありません
           </Typography>
         :
@@ -213,7 +216,7 @@ const DeletePage = () => {
               <Pagination count={Math.ceil(registeredMeal.length / displayCnt)} variant="outlined" shape="rounded" page={page} onChange={handleChangePagination} />
             </Stack>
           :
-          <Typography id="noResult" marginTop="20px">
+          <Typography id="noResult" marginTop="20px" marginLeft="55px" fontWeight="bold">
             データがありません
           </Typography>
       }

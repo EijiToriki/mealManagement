@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import { Divider, Grid, Pagination, Stack, TextField } from '@mui/material';
 import axios from 'axios';
 import { URL } from '../data/constants';
+import { useSelector } from 'react-redux';
 
 const style = {
   position: 'absolute',
@@ -38,14 +39,18 @@ const SelectModal = ({setMeal}) => {
   const [filteredMeal, setFilteredMeal] = React.useState([])
   const [page, setPage] = React.useState(1)
 
+  const userId = useSelector(state => state.authorize.user_id)
 
   React.useEffect(() => {
-    const get_all_foods = async() => {
-      const res = await axios.get(URL + "/get_all_foods")
+    const get_all_foods = async(params) => {
+      const res = await axios.get(URL + "/get_all_foods", {params})
       setRegisteredMeal(res.data)
       setFilteredMeal(res.data.slice(0, displayCnt))
     }
-    get_all_foods()
+    const params = {
+      user_id : userId
+    }
+    get_all_foods(params)
    }, [])
 
   const handleSearchChange = (e) => {

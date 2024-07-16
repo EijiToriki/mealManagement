@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Repository
 public interface DeletePageRepository {
-    Map<String, List<Map<String, Object>>> get_all_meal_food();
+    Map<String, List<Map<String, Object>>> get_all_meal_food(int user_id);
 
     int delete_one_meal(int id);
 

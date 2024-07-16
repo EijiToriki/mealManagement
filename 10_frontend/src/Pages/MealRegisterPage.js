@@ -47,6 +47,7 @@ const MealRegisterPage = () => {
 
   const handleSubmit = async() =>{
     const mealData = {
+      user_id: userId,
       date: date,
       time: time,
       name: meal.name,

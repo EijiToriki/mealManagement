@@ -18,9 +18,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MealInquiryService {
     private final MealInquiryRepository mealInquiryRepository;
-    public MealInquiryResponseEntity get_inquiry_data(LocalDate startDate, LocalDate endDate){
+    public MealInquiryResponseEntity get_inquiry_data(LocalDate startDate, LocalDate endDate, int user_id){
         // 食事履歴の取得
-        List<Map<String, Object>> queryResultsMealHistory = mealInquiryRepository.get_meal_history(startDate, endDate);
+        List<Map<String, Object>> queryResultsMealHistory = mealInquiryRepository.get_meal_history(startDate, endDate, user_id);
         List<MealResponseEntity> mealHistories = new ArrayList<>();
         for(Map<String, Object> queryResult : queryResultsMealHistory){
             MealResponseEntity mealResponse = new MealResponseEntity(
@@ -38,7 +38,7 @@ public class MealInquiryService {
         }
 
         // 成分ごと日付ごとのグラフ用データの取得
-        List<Map<String, Object>> queryResultsGraph = mealInquiryRepository.get_dairy_data(startDate,endDate);
+        List<Map<String, Object>> queryResultsGraph = mealInquiryRepository.get_dairy_data(startDate,endDate, user_id);
 
         List<LocalDate> dateRangeList = generateDateRange(startDate, endDate);
         List<Double> calories = new ArrayList<>();

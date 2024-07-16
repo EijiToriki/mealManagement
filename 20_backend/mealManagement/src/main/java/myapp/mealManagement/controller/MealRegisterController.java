@@ -18,8 +18,8 @@ public class MealRegisterController {
     private final MealRegisterService mealRegisterService;
 
     @GetMapping("/get_all_foods")
-    public List<FoodResponseEntity> get_all_foods(){
-        return mealRegisterService.get_all_foods();
+    public List<FoodResponseEntity> get_all_foods(@RequestParam int user_id){
+        return mealRegisterService.get_all_foods(user_id);
     }
 
     @PostMapping("/register_meal")

@@ -42,7 +42,7 @@ const MealInquiryTable = ({flag, mealHistory}) => {
                 </TableCell>
                 <TableCell>{row.date}</TableCell>
                 <TableCell>{row.time}</TableCell>
-                <TableCell>{row.mealName}</TableCell>
+                <TableCell>{row.name}</TableCell>
                 <TableCell align="right">{row.calories}</TableCell>
                 <TableCell align="right">{row.protein}</TableCell>
                 <TableCell align="right">{row.carbs}</TableCell>

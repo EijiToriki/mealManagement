@@ -16,8 +16,8 @@ import java.util.*;
 public class TopPageService {
     private final TopPageRepository topPageRepository;
 
-    public OneweekCaloriesResponseEntity get_oneweek_calories(){
-        List<Map<String, Object>> queryResults = topPageRepository.get_oneweek_calories();
+    public OneweekCaloriesResponseEntity get_oneweek_calories(int user_id){
+        List<Map<String, Object>> queryResults = topPageRepository.get_oneweek_calories(user_id);
 
         // 日付とカロリーの対応付けをマップに格納する。
         // 格納時に日付をStringに変換する
@@ -57,7 +57,7 @@ public class TopPageService {
     }
 
 
-    public List<TodayNutritionResponseEntity> get_today_nutrition(){
+    public List<TodayNutritionResponseEntity> get_today_nutrition(int user_id){
         // 目標値の取得
         List<Map<String, Object>> queryAverageResults = topPageRepository.get_average_nutrition();
         Map<String, Double> nutritionMap = new HashMap<>();
@@ -69,7 +69,7 @@ public class TopPageService {
         }
 
         // 本質の栄養摂取量を取得 & レスポンス用エンティティに格納
-        List<Map<String, Object>> queryTodayResults = topPageRepository.get_today_nutrition();
+        List<Map<String, Object>> queryTodayResults = topPageRepository.get_today_nutrition(user_id);
         List<TodayNutritionResponseEntity> todayNutritionResponseEntityList = new ArrayList<>();
 
         for (Map.Entry<String, Object> entry : queryTodayResults.get(0).entrySet()) {
@@ -89,7 +89,7 @@ public class TopPageService {
     }
 
 
-    public int get_achievement_day(){
+    public int get_achievement_day(int user_id){
         // 目標値の取得
         List<Map<String, Object>> queryAverageResults = topPageRepository.get_average_nutrition();
         Map<String, Double> nutritionMap = new HashMap<>();
@@ -104,7 +104,7 @@ public class TopPageService {
         int achieveDay = 0;
         LocalDate inquiryDay = LocalDate.now().minusDays(1);
         while (true){
-            List<Map<String, Object>> queryOneDayResults = topPageRepository.get_oneday_nutrition(inquiryDay);
+            List<Map<String, Object>> queryOneDayResults = topPageRepository.get_oneday_nutrition(inquiryDay, user_id);
             Map<String, Object> oneDayMap = queryOneDayResults.get(0);
 
             for(Map.Entry<String, Object> entry: oneDayMap.entrySet()){

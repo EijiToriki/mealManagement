@@ -17,7 +17,7 @@ import java.util.List;
 public class MealInquiryController {
     private final MealInquiryService mealInquiryService;
     @GetMapping("/get_dairy_data")
-    public MealInquiryResponseEntity get_inquiry_data(@RequestParam LocalDate startDate, LocalDate endDate){
-        return mealInquiryService.get_inquiry_data(startDate, endDate);
+    public MealInquiryResponseEntity get_inquiry_data(@RequestParam LocalDate startDate, LocalDate endDate, int user_id){
+        return mealInquiryService.get_inquiry_data(startDate, endDate, user_id);
     }
 }

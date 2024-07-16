@@ -32,6 +32,7 @@ const FoodRegisterPage = () => {
 
   const handleSubmit = async() => {
     const foodData = {
+      user_id: userId,
       name: food.mealName,
       calories: food.calories,
       protein: food.protein,

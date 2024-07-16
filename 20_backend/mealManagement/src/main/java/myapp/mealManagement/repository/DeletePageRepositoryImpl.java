@@ -14,15 +14,15 @@ public class DeletePageRepositoryImpl implements DeletePageRepository{
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Map<String, List<Map<String, Object>>> get_all_meal_food(){
+    public Map<String, List<Map<String, Object>>> get_all_meal_food(int user_id){
         Map<String, List<Map<String, Object>>> returnMap = new HashMap<>();
 
-        String sqlFood = "select * from food";
-        List<Map<String, Object>> foodRslt = jdbcTemplate.queryForList(sqlFood);
+        String sqlFood = "select * from food where user_id = ? ";
+        List<Map<String, Object>> foodRslt = jdbcTemplate.queryForList(sqlFood, user_id);
         returnMap.put("food", foodRslt);
 
-        String sqlMeal = "select * from meal";
-        List<Map<String, Object>> mealRslt = jdbcTemplate.queryForList(sqlMeal);
+        String sqlMeal = "select * from meal where user_id = ? ";
+        List<Map<String, Object>> mealRslt = jdbcTemplate.queryForList(sqlMeal, user_id);
         returnMap.put("meal", mealRslt);
 
         return returnMap;

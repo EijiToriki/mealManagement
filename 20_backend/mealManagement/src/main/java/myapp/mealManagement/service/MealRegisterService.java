@@ -18,10 +18,10 @@ import java.util.Map;
 public class MealRegisterService {
     private final MealRegisterRepository mealRegisterRepository;
 
-    public List<FoodResponseEntity> get_all_foods() {
+    public List<FoodResponseEntity> get_all_foods(int user_id) {
         List<FoodResponseEntity> foods = new ArrayList<>();
 
-        List<Map<String, Object>> queryResults = mealRegisterRepository.get_all_foods();
+        List<Map<String, Object>> queryResults = mealRegisterRepository.get_all_foods(user_id);
         for (Map<String, Object> queryResult : queryResults) {
             FoodResponseEntity foodResponseEntity = new FoodResponseEntity(
                     (String) queryResult.get("name"),
